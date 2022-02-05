@@ -1,7 +1,6 @@
 # Text Calculator
 TextCalculator is a Java class which provides a smart calculator.  
 
-----
 ## Getting started
 To start the calculator, run the function start() which provides a console.
 ```java
