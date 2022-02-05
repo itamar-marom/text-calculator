@@ -1,7 +1,5 @@
 import junit.framework.TestCase;
 
-import java.util.HashMap;
-
 public class NegativeNumberParserTest extends TestCase {
 
     private final static NegativeNumberParser negativeNumberParser = new NegativeNumberParser();

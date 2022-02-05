@@ -1,5 +1,3 @@
-import com.sun.org.apache.xalan.internal.xsltc.runtime.Operators;
-
 import java.util.HashMap;
 
 public class NegativeNumberParser implements Parser {

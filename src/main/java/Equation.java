@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class Equation {
     private final String variable;
     private final String operator;
