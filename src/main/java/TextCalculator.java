@@ -42,19 +42,19 @@ public class TextCalculator {
 
         Stack<String> stack = new Stack<>();
         char[] arr = expression.toCharArray();
-        String component = "";
+        StringBuilder component = new StringBuilder();
 
         for (int i = 0; i < arr.length; i++) {
             if ((Character.isDigit(arr[i])) || (arr[i] == '.')) {
-                component += arr[i];
+                component.append(arr[i]);
 
                 if (i == (arr.length - 1))
-                    stack.push(component);
+                    stack.push(component.toString());
             } else {
 
-                if (!component.isEmpty()) {
-                    stack.push(component);
-                    component = "";
+                if (component.length() > 0) {
+                    stack.push(component.toString());
+                    component = new StringBuilder();
                 }
 
                 if (arr[i] != ')') {
