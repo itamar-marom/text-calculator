@@ -96,13 +96,6 @@ public class FixedVariableParserTest extends TestCase {
         assertEquals("", 0.0, variables.get("b"));
     }
 
-    public void testParseMultipleFixes() {
-        HashMap<String, Double> variables = new HashMap<>();
-        variables.put("a", 0.0);
-        testParse("++a--", "", variables, false);
-        assertEquals("", 0.0, variables.get("a"));
-    }
-
     public void testParseTooManyFixes() {
         HashMap<String, Double> variables = new HashMap<>();
         variables.put("a", 0.0);

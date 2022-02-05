@@ -35,8 +35,8 @@ public class FixedVariableParser implements Parser {
 
                 Double value;
 
-                if ((potentialPreFix != null) && (potentialPostFix != null))
-                    throw new Exception("Variable have preFix and postFix operators: " + variableName);
+//                if ((potentialPreFix != null) && (potentialPostFix != null))
+//                    throw new Exception("Variable have preFix and postFix operators: " + variableName);
 
                 if (potentialPreFix != null) {
                     value = enforcePreFix(variables, variableName.toString(), potentialPreFix);
