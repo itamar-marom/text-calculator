@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="8" failures="0" name="EquationTest" time="0.003" errors="0" skipped="0">
+<testsuite tests="8" failures="0" name="EquationTest" time="0.004" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="17.0.2+0"/>
@@ -61,12 +61,12 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase classname="EquationTest" name="testEquationDifficultExpression" time="0.002"/>
-  <testcase classname="EquationTest" name="testEquationModEqualPlacement" time="0.001"/>
+  <testcase classname="EquationTest" name="testEquationDifficultExpression" time="0.003"/>
+  <testcase classname="EquationTest" name="testEquationModEqualPlacement" time="0"/>
   <testcase classname="EquationTest" name="testEquationInvalidPlacement" time="0"/>
   <testcase classname="EquationTest" name="testEquationMulEqualPlacement" time="0"/>
   <testcase classname="EquationTest" name="testEquationPlusEqualPlacement" time="0"/>
   <testcase classname="EquationTest" name="testEquationMinusEqualPlacement" time="0"/>
-  <testcase classname="EquationTest" name="testEquationEqualPlacement" time="0"/>
+  <testcase classname="EquationTest" name="testEquationEqualPlacement" time="0.001"/>
   <testcase classname="EquationTest" name="testEquationTooManyOperators" time="0"/>
 </testsuite>

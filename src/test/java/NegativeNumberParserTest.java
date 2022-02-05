@@ -35,8 +35,9 @@ public class NegativeNumberParserTest extends TestCase {
     public void testParseNegativeNumberMinusNegativeNumber() {
         testParse("-1--1", "(0-1)-(0-1)", true);
     }
-    public void testParseNegativeBrackets() {
-        testParse("-(1-2)", "-1*(1-2)", true);
+
+    public void testParseNegativeBracketsAtStart() {
+        testParse("-(1-2)", "(0-1)*(1-2)", true);
     }
 
     public void testParseMulNegativeNumber() {

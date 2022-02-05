@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="8" failures="0" name="NegativeNumberParserTest" time="0" errors="0" skipped="0">
+<testsuite tests="9" failures="0" name="AdditiveResolverTest" time="0.001" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="17.0.2+0"/>
@@ -61,12 +61,13 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase classname="NegativeNumberParserTest" name="testParseNegativeNumberMinusNegativeNumber" time="0"/>
-  <testcase classname="NegativeNumberParserTest" name="testParseNegativeBracketsAtStart" time="0"/>
-  <testcase classname="NegativeNumberParserTest" name="testParseNegativeNumber" time="0"/>
-  <testcase classname="NegativeNumberParserTest" name="testParsePositiveNumber" time="0"/>
-  <testcase classname="NegativeNumberParserTest" name="testParseMinusNegativeNumber" time="0"/>
-  <testcase classname="NegativeNumberParserTest" name="testParseMulNegativeNumber" time="0"/>
-  <testcase classname="NegativeNumberParserTest" name="testParseMinusWithNoNumber" time="0"/>
-  <testcase classname="NegativeNumberParserTest" name="testParsePlusNegativeNumber" time="0"/>
+  <testcase classname="AdditiveResolverTest" name="testResolveBasicMinus" time="0.001"/>
+  <testcase classname="AdditiveResolverTest" name="testResolveInvalidStartingOperator" time="0"/>
+  <testcase classname="AdditiveResolverTest" name="testResolveInvalidSeriesOperators" time="0"/>
+  <testcase classname="AdditiveResolverTest" name="testResolveBasicAdd" time="0"/>
+  <testcase classname="AdditiveResolverTest" name="testResolveInvalidOneComponent" time="0"/>
+  <testcase classname="AdditiveResolverTest" name="testResolveMultipleOperators" time="0"/>
+  <testcase classname="AdditiveResolverTest" name="testResolveNumber" time="0"/>
+  <testcase classname="AdditiveResolverTest" name="testResolvePositiveNumber" time="0"/>
+  <testcase classname="AdditiveResolverTest" name="testResolveInvalidEndingOperator" time="0"/>
 </testsuite>

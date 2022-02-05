@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="12" failures="0" name="FixedVariableParserTest" time="0.007" errors="0" skipped="0">
+<testsuite tests="15" failures="0" name="FixedVariableParserTest" time="0.003" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="17.0.2+0"/>
@@ -61,16 +61,19 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase classname="FixedVariableParserTest" name="testParseBasicNegativePrefix" time="0"/>
+  <testcase classname="FixedVariableParserTest" name="testParseBasicNegativePrefix" time="0.001"/>
   <testcase classname="FixedVariableParserTest" name="testParseNegativePostfixMinusNumber" time="0"/>
-  <testcase classname="FixedVariableParserTest" name="testParseBasicPositivePrefix" time="0.001"/>
+  <testcase classname="FixedVariableParserTest" name="testParseBasicPositivePrefix" time="0"/>
   <testcase classname="FixedVariableParserTest" name="testParseNumber" time="0"/>
-  <testcase classname="FixedVariableParserTest" name="testParseVariable" time="0.001"/>
-  <testcase classname="FixedVariableParserTest" name="testParseMinusNegativeNumber" time="0.001"/>
+  <testcase classname="FixedVariableParserTest" name="testParseVariable" time="0"/>
+  <testcase classname="FixedVariableParserTest" name="testParseBasicPrefixWithBrackets" time="0"/>
+  <testcase classname="FixedVariableParserTest" name="testParseMinusNegativeNumber" time="0"/>
   <testcase classname="FixedVariableParserTest" name="testParseMultipleFixes" time="0"/>
+  <testcase classname="FixedVariableParserTest" name="testParseVariableNotExists" time="0"/>
+  <testcase classname="FixedVariableParserTest" name="testParseBasicPostfixWithBrackets" time="0.001"/>
   <testcase classname="FixedVariableParserTest" name="testParseTooManyFixes" time="0"/>
-  <testcase classname="FixedVariableParserTest" name="testParseBasicPositivePostfix" time="0.001"/>
-  <testcase classname="FixedVariableParserTest" name="testParseNegativePostfixMinusNegativeNumber" time="0.001"/>
+  <testcase classname="FixedVariableParserTest" name="testParseBasicPositivePostfix" time="0"/>
+  <testcase classname="FixedVariableParserTest" name="testParseNegativePostfixMinusNegativeNumber" time="0"/>
   <testcase classname="FixedVariableParserTest" name="testParseNegativePostfixMinusNegativePrefix" time="0.001"/>
-  <testcase classname="FixedVariableParserTest" name="testParseBasicNegativePostfix" time="0.001"/>
+  <testcase classname="FixedVariableParserTest" name="testParseBasicNegativePostfix" time="0"/>
 </testsuite>
