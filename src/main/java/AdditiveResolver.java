@@ -3,28 +3,37 @@ import java.util.List;
 
 public class AdditiveResolver implements Resolver {
     @Override
-    public void resolve(List<String> expression) {
-        Double answer = Double.valueOf(expression.get(0));
+    public void resolve(List<String> expression) throws Exception {
+        Double answer = null;
+        if (expression.get(0).equals("+"))
+            expression.remove(0);
+
+        System.out.println(expression.toString());
+
         while (expression.size() >= 3) {
-            Double component1 = Double.valueOf(expression.get(0));
-            String operator = expression.get(1);
-            Double component2 = Double.valueOf(expression.get(2));
+            try {
+                Double component1 = Double.valueOf(expression.get(0));
+                String operator = expression.get(1);
+                Double component2 = Double.valueOf(expression.get(2));
 
-            switch (operator) {
-                case "+":
-                    answer = component1 + component2;
-                    break;
-                case "-":
-                    answer = component1 - component2;
-                    break;
+                switch (operator) {
+                    case "+":
+                        answer = component1 + component2;
+                        break;
+                    case "-":
+                        answer = component1 - component2;
+                        break;
+                }
+
+                expression.remove(2);
+                expression.remove(1);
+                expression.set(0, answer.toString());
+            } catch(NumberFormatException e){
+                throw new Exception("Invalid order of components and operators.");
             }
-
-            expression.remove(2);
-            expression.remove(1);
-            expression.set(0, answer.toString());
         }
 
-        expression = new ArrayList<String>();
-        expression.add(answer.toString());
+        if (expression.size() > 1)
+            throw new Exception("Invalid order of components and operators.");
     }
 }
