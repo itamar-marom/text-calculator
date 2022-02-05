@@ -92,18 +92,18 @@ public class FixedVariableParser implements Parser {
     }
 
     private static String getPreFix(char[] arr, int index) {
-        String preFix = "";
+        StringBuilder preFix = new StringBuilder();
 
         for (int preIndex = (index - 2); (preIndex >= 0 && preIndex < index); preIndex++)
-            preFix += arr[preIndex];
+            preFix.append(arr[preIndex]);
 
         for (String fixedOperator : FIXED_OPERATORS) {
-            if (preFix.equals(fixedOperator)) {
+            if (preFix.toString().equals(fixedOperator)) {
                 if ((index - 3) >= 0)
                     return (Operator.isOperator(arr[index - 3]) ||
-                            (arr[index - 3] == '(')) ? preFix : null;
+                            (arr[index - 3] == '(')) ? preFix.toString() : null;
 
-                return preFix;
+                return preFix.toString();
             }
         }
 
@@ -111,18 +111,18 @@ public class FixedVariableParser implements Parser {
     }
 
     private static String getPostFix(char[] arr, int index) {
-        String postFix = "";
+        StringBuilder postFix = new StringBuilder();
 
         for (int postIndex = (index + 1); (postIndex < arr.length && postIndex <= (index + 2)); postIndex++)
-            postFix += arr[postIndex];
+            postFix.append(arr[postIndex]);
 
         for (String fixedOperator : FIXED_OPERATORS) {
-            if (postFix.equals(fixedOperator)) {
+            if (postFix.toString().equals(fixedOperator)) {
                 if ((index + 3) < arr.length)
                     return ((Operator.isOperator(arr[index + 3])) ||
-                            (arr[index + 3] == ')')) ? postFix : null;
+                            (arr[index + 3] == ')')) ? postFix.toString() : null;
 
-                return postFix;
+                return postFix.toString();
             }
         }
 
