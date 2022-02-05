@@ -12,8 +12,8 @@ public class Variable {
 
         char[] arr = str.toCharArray();
 
-        for (int i = 0; i < arr.length; i++) {
-            if ((!Character.isAlphabetic(arr[i])) && (!Character.isDigit(arr[i])))
+        for (char c : arr) {
+            if ((!Character.isAlphabetic(c)) && (!Character.isDigit(c)))
                 return false;
         }
 

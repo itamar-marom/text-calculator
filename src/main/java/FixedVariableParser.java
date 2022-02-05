@@ -33,7 +33,7 @@ public class FixedVariableParser implements Parser {
                 String potentialPreFix = getPreFix(arr, i);
                 String potentialPostFix = getPostFix(arr, variableNameEndIndex - 1);
 
-                Double value = null;
+                Double value;
 
                 if ((potentialPreFix != null) && (potentialPostFix != null))
                     throw new Exception("Variable have preFix and postFix operators: " + variableName);
@@ -97,8 +97,8 @@ public class FixedVariableParser implements Parser {
         for (int preIndex = (index - 2); (preIndex >= 0 && preIndex < index); preIndex++)
             preFix += arr[preIndex];
 
-        for (int i = 0; i < FIXED_OPERATORS.length; i++) {
-            if (preFix.equals(FIXED_OPERATORS[i])) {
+        for (String fixedOperator : FIXED_OPERATORS) {
+            if (preFix.equals(fixedOperator)) {
                 if ((index - 3) >= 0)
                     return (Operator.isOperator(arr[index - 3]) ||
                             (arr[index - 3] == '(')) ? preFix : null;
@@ -116,8 +116,8 @@ public class FixedVariableParser implements Parser {
         for (int postIndex = (index + 1); (postIndex < arr.length && postIndex <= (index + 2)); postIndex++)
             postFix += arr[postIndex];
 
-        for (int i = 0; i < FIXED_OPERATORS.length; i++) {
-            if (postFix.equals(FIXED_OPERATORS[i])) {
+        for (String fixedOperator : FIXED_OPERATORS) {
+            if (postFix.equals(fixedOperator)) {
                 if ((index + 3) < arr.length)
                     return ((Operator.isOperator(arr[index + 3])) ||
                             (arr[index + 3] == ')')) ? postFix : null;

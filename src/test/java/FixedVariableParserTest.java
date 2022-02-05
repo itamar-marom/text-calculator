@@ -21,47 +21,47 @@ public class FixedVariableParserTest extends TestCase {
     }
 
     public void testParseVariable() {
-        HashMap<String, Double> variables = new HashMap<String, Double>();
+        HashMap<String, Double> variables = new HashMap<>();
         variables.put("a", 0.0);
         testParse("a", "0.0", variables, true);
         assertEquals("", 0.0, variables.get("a"));
     }
 
     public void testParseVariableNotExists() {
-        HashMap<String, Double> variables = new HashMap<String, Double>();
+        HashMap<String, Double> variables = new HashMap<>();
         testParse("a", "0.0", variables, false);
     }
 
     public void testParseBasicNegativePrefix() {
-        HashMap<String, Double> variables = new HashMap<String, Double>();
+        HashMap<String, Double> variables = new HashMap<>();
         variables.put("a", 0.0);
         testParse("--a", "-1.0", variables, true);
         assertEquals("", -1.0, variables.get("a"));
     }
 
     public void testParseBasicPositivePrefix() {
-        HashMap<String, Double> variables = new HashMap<String, Double>();
+        HashMap<String, Double> variables = new HashMap<>();
         variables.put("a", 0.0);
         testParse("++a", "1.0", variables, true);
         assertEquals("", 1.0, variables.get("a"));
     }
 
     public void testParseBasicNegativePostfix() {
-        HashMap<String, Double> variables = new HashMap<String, Double>();
+        HashMap<String, Double> variables = new HashMap<>();
         variables.put("a", 0.0);
         testParse("a--", "0.0", variables, true);
         assertEquals("", -1.0, variables.get("a"));
     }
 
     public void testParseBasicPositivePostfix() {
-        HashMap<String, Double> variables = new HashMap<String, Double>();
+        HashMap<String, Double> variables = new HashMap<>();
         variables.put("a", 0.0);
         testParse("a++", "0.0", variables, true);
         assertEquals("", 1.0, variables.get("a"));
     }
 
     public void testParseMinusNegativeNumber() {
-        HashMap<String, Double> variables = new HashMap<String, Double>();
+        HashMap<String, Double> variables = new HashMap<>();
         variables.put("a", 0.0);
         variables.put("b", 1.0);
         testParse("a--b", "0.0--1.0", variables, true);
@@ -70,7 +70,7 @@ public class FixedVariableParserTest extends TestCase {
     }
 
     public void testParseNegativePostfixMinusNumber() {
-        HashMap<String, Double> variables = new HashMap<String, Double>();
+        HashMap<String, Double> variables = new HashMap<>();
         variables.put("a", 0.0);
         variables.put("b", 1.0);
         testParse("a---b", "0.0-1.0", variables, true);
@@ -79,7 +79,7 @@ public class FixedVariableParserTest extends TestCase {
     }
 
     public void testParseNegativePostfixMinusNegativeNumber() {
-        HashMap<String, Double> variables = new HashMap<String, Double>();
+        HashMap<String, Double> variables = new HashMap<>();
         variables.put("a", 0.0);
         variables.put("b", 1.0);
         testParse("a----b", "0.0--1.0", variables, true);
@@ -88,7 +88,7 @@ public class FixedVariableParserTest extends TestCase {
     }
 
     public void testParseNegativePostfixMinusNegativePrefix() {
-        HashMap<String, Double> variables = new HashMap<String, Double>();
+        HashMap<String, Double> variables = new HashMap<>();
         variables.put("a", 0.0);
         variables.put("b", 1.0);
         testParse("a-----b", "0.0-0.0", variables, true);
@@ -97,14 +97,14 @@ public class FixedVariableParserTest extends TestCase {
     }
 
     public void testParseMultipleFixes() {
-        HashMap<String, Double> variables = new HashMap<String, Double>();
+        HashMap<String, Double> variables = new HashMap<>();
         variables.put("a", 0.0);
         testParse("++a--", "", variables, false);
         assertEquals("", 0.0, variables.get("a"));
     }
 
     public void testParseTooManyFixes() {
-        HashMap<String, Double> variables = new HashMap<String, Double>();
+        HashMap<String, Double> variables = new HashMap<>();
         variables.put("a", 0.0);
         variables.put("b", 1.0);
         testParse("a------b", "0.0--0.0", variables, true);
@@ -113,14 +113,14 @@ public class FixedVariableParserTest extends TestCase {
     }
 
     public void testParseBasicPrefixWithBrackets() {
-        HashMap<String, Double> variables = new HashMap<String, Double>();
+        HashMap<String, Double> variables = new HashMap<>();
         variables.put("a", 0.0);
         testParse("(--a)", "(-1.0)", variables, true);
         assertEquals("", -1.0, variables.get("a"));
     }
 
     public void testParseBasicPostfixWithBrackets() {
-        HashMap<String, Double> variables = new HashMap<String, Double>();
+        HashMap<String, Double> variables = new HashMap<>();
         variables.put("a", 0.0);
         testParse("(a--)", "(0.0)", variables, true);
         assertEquals("", -1.0, variables.get("a"));

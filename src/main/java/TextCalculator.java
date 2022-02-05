@@ -58,7 +58,7 @@ public class TextCalculator {
                 }
 
                 if (arr[i] != ')') {
-                    stack.push(new String(new char[] { arr[i] }));
+                    stack.push(String.valueOf(arr[i]));
                 } else {
                     ArrayList<String> subExpression = new ArrayList<>();
                     while (!stack.isEmpty()) {
