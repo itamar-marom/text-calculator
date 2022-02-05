@@ -27,7 +27,7 @@ public class FixedVariableParser implements Parser {
 
                 // Check if it exists
                 if (!variables.containsKey(variableName.toString()))
-                    throw new Exception("Variable does not exists: " + variableName.toString());
+                    throw new Exception("Variable does not exists: " + variableName);
 
                 // Get pre-post fixes before
                 String potentialPreFix = getPreFix(arr, i);
@@ -36,7 +36,7 @@ public class FixedVariableParser implements Parser {
                 Double value;
 
                 if ((potentialPreFix != null) && (potentialPostFix != null))
-                    throw new Exception("Variable have preFix and postFix operators: " + variableName.toString());
+                    throw new Exception("Variable have preFix and postFix operators: " + variableName);
 
                 if (potentialPreFix != null) {
                     value = enforcePreFix(variables, variableName.toString(), potentialPreFix);
