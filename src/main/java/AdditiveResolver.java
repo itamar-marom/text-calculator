@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Objects;
 
 public class AdditiveResolver implements Resolver {
     @Override
@@ -24,7 +25,7 @@ public class AdditiveResolver implements Resolver {
 
                 expression.remove(2);
                 expression.remove(1);
-                expression.set(0, answer.toString());
+                expression.set(0, Objects.requireNonNull(answer).toString());
             } catch(NumberFormatException e){
                 throw new Exception("Invalid order of components and operators.");
             }

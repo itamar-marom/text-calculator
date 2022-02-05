@@ -1,6 +1,7 @@
 import junit.framework.TestCase;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class TextCalculatorTest extends TestCase {
 
@@ -18,7 +19,7 @@ public class TextCalculatorTest extends TestCase {
             Double result = textCalculator.solve(equation);
             answer = true;
             assertEquals("", expectedOutput, result);
-            assertEquals("", expectedOutput, variables.get(equation.getVariable()));
+            assertEquals("", expectedOutput, Objects.requireNonNull(variables).get(equation.getVariable()));
         } catch (Exception e) {}
         assertEquals("", isValid, answer);
     }
