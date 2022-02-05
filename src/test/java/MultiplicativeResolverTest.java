@@ -13,7 +13,7 @@ public class MultiplicativeResolverTest extends TestCase {
             multiplicativeResolver.resolve(input);
             answer = true;
             assertEquals("", expectedOutput, input.toString());
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
         assertEquals("", isValid, answer);
     }
 

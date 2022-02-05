@@ -12,7 +12,7 @@ public class FixedVariableParserTest extends TestCase {
             String fixedExpression = fixedVariableParser.parse(variables, expression);
             answer = true;
             assertEquals("", output, fixedExpression);
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
         assertEquals("", isValid, answer);
     }
 

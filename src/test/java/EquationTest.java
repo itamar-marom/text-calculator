@@ -13,7 +13,7 @@ public class EquationTest extends TestCase {
             assertEquals("", expectedOperator, e.getOperator());
             assertEquals("", expression, e.getExpression());
             answer = true;
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
         assertEquals("Equation built from: variable, operator, and mathematical expression",
                 isValid, answer);
     }

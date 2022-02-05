@@ -4,13 +4,15 @@ public class TextCalculator {
 
     private final static Scanner in = new Scanner(System.in);
     private final HashMap<String, Double> variables;
-    private final static MultiplicativeResolver multiplicativeResolver = new MultiplicativeResolver();
-    private final static AdditiveResolver additiveResolver = new AdditiveResolver();
-    private final static FixedVariableParser fixedVariableParser = new FixedVariableParser();
-    private final static NegativeNumberParser negativeNumberParser = new NegativeNumberParser();
+    private final static List<Parser> parsers = new ArrayList<>();
+    private final static List<Resolver> resolvers = new ArrayList<>();
 
     public TextCalculator() {
         variables = new HashMap<>();
+        parsers.add(new FixedVariableParser());
+        parsers.add(new NegativeNumberParser());
+        resolvers.add(new MultiplicativeResolver());
+        resolvers.add(new AdditiveResolver());
     }
     public TextCalculator(HashMap<String, Double> variables) {
         this.variables = variables;
@@ -37,8 +39,7 @@ public class TextCalculator {
     public Double solve(Equation equation) throws Exception {
         String expression = equation.getExpression();
         expression = expression.replaceAll(" ", "");
-        expression = fixedVariableParser.parse(variables, expression);
-        expression = negativeNumberParser.parse(null, expression);
+        for (Parser parser : parsers) expression = parser.parse(variables, expression);
 
         Stack<String> stack = new Stack<>();
         char[] arr = expression.toCharArray();
@@ -69,8 +70,8 @@ public class TextCalculator {
                             subExpression.add(0, top);
                         }
                     }
-                    multiplicativeResolver.resolve(subExpression);
-                    additiveResolver.resolve(subExpression);
+
+                    for (Resolver resolver : resolvers) resolver.resolve(subExpression);
                     stack.push(subExpression.get(0));
                 }
             }
@@ -85,8 +86,8 @@ public class TextCalculator {
                 finalExpression.add(0, top);
             }
         }
-        multiplicativeResolver.resolve(finalExpression);
-        additiveResolver.resolve(finalExpression);
+
+        for (Resolver resolver : resolvers) resolver.resolve(finalExpression);
 
         Double expressionAnswer = Double.valueOf(finalExpression.get(0));
         Double answer = placement(equation.getVariable(), equation.getOperator(), expressionAnswer);

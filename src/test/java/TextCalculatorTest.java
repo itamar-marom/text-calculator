@@ -20,7 +20,7 @@ public class TextCalculatorTest extends TestCase {
             answer = true;
             assertEquals("", expectedOutput, result);
             assertEquals("", expectedOutput, Objects.requireNonNull(variables).get(equation.getVariable()));
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
         assertEquals("", isValid, answer);
     }
 

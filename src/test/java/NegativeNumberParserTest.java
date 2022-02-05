@@ -10,7 +10,7 @@ public class NegativeNumberParserTest extends TestCase {
             String resultExpression = negativeNumberParser.parse(null, expression);
             answer = true;
             assertEquals("", output, resultExpression);
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
         assertEquals("", isValid, answer);
     }
 

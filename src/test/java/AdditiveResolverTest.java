@@ -13,7 +13,7 @@ public class AdditiveResolverTest extends TestCase {
             additiveResolver.resolve(input);
             answer = true;
             assertEquals("", expectedOutput, input.toString());
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
         assertEquals("", isValid, answer);
     }
 

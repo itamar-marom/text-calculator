@@ -8,7 +8,7 @@ public class Variable {
         try {
             Double.parseDouble(str);
             return false;
-        } catch(NumberFormatException e){}
+        } catch(NumberFormatException ignored){}
 
         char[] arr = str.toCharArray();
 
