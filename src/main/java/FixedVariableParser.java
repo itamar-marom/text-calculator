@@ -43,8 +43,7 @@ public class FixedVariableParser implements Parser {
                 if (potentialPreFix != null) {
                     value = enforcePreFix(variables, variableName, potentialPreFix);
                     newEquation = newEquation.substring(0, newEquation.length() - 2) +
-                            value.toString() +
-                            str.substring(variableNameEndIndex);
+                            value.toString();
                     arr[i - 1] = ' ';
                     arr[i - 2] = ' ';
                     i = variableNameEndIndex - 1;
@@ -103,7 +102,8 @@ public class FixedVariableParser implements Parser {
         for (int i = 0; i < FIXED_OPERATORS.length; i++) {
             if (preFix.equals(FIXED_OPERATORS[i])) {
                 if ((index - 3) >= 0)
-                    return (Operator.isOperator(arr[index - 3])) ? preFix : null;
+                    return (Operator.isOperator(arr[index - 3]) ||
+                            (arr[index - 3] == '(')) ? preFix : null;
 
                 return preFix;
             }
@@ -121,7 +121,8 @@ public class FixedVariableParser implements Parser {
         for (int i = 0; i < FIXED_OPERATORS.length; i++) {
             if (postFix.equals(FIXED_OPERATORS[i])) {
                 if ((index + 3) < arr.length)
-                    return (Operator.isOperator(arr[index + 3])) ? postFix : null;
+                    return ((Operator.isOperator(arr[index + 3])) ||
+                            (arr[index + 3] == ')')) ? postFix : null;
 
                 return postFix;
             }

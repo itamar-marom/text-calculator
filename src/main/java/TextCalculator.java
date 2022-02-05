@@ -38,7 +38,9 @@ public class TextCalculator {
         String expression = equation.getExpression();
         expression = expression.replaceAll(" ", "");
         expression = fixedVariableParser.parse(variables, expression);
+        System.out.println("After fvp: " + expression);
         expression = negativeNumberParser.parse(null, expression);
+        System.out.println("After nnp: " + expression);
 
         Stack<String> stack = new Stack<>();
         char[] arr = expression.toCharArray();

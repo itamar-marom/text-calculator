@@ -111,4 +111,18 @@ public class FixedVariableParserTest extends TestCase {
         assertEquals("", -1.0, variables.get("a"));
         assertEquals("", 0.0, variables.get("b"));
     }
+
+    public void testParseBasicPrefixWithBrackets() {
+        HashMap<String, Double> variables = new HashMap<String, Double>();
+        variables.put("a", 0.0);
+        testParse("(--a)", "(-1.0)", variables, true);
+        assertEquals("", -1.0, variables.get("a"));
+    }
+
+    public void testParseBasicPostfixWithBrackets() {
+        HashMap<String, Double> variables = new HashMap<String, Double>();
+        variables.put("a", 0.0);
+        testParse("(a--)", "(0.0)", variables, true);
+        assertEquals("", -1.0, variables.get("a"));
+    }
 }

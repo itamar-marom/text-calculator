@@ -95,7 +95,16 @@ public class TextCalculatorTest extends TestCase {
         testSolve("i = 4 - 2 * 7",-10.0, true, null);
     }
 
+    public void testSolveComplicated() {
+        HashMap<String, Double> variables =  new HashMap<>();
+        variables.put("a", 1.0);
+        variables.put("b", 4.0);
+        testSolve("i = a++ * (2 / (--b + 1) - 10) * a--",-19.0, true, variables);
+        assertEquals("", 1.0, variables.get("a"));
+        assertEquals("", 3.0, variables.get("b"));
+    }
+
     public void testSolveNegativeBrackets() {
-        testSolve("i = -(4 - 2)",2.0, true, null);
+        testSolve("i = -(4 - 2)",-2.0, true, null);
     }
 }
