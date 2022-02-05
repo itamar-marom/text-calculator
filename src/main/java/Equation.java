@@ -1,9 +1,9 @@
 import java.util.List;
 
 public class Equation {
-    private String variable;
-    private String operator;
-    private String expression;
+    private final String variable;
+    private final String operator;
+    private final String expression;
     private static final String[] OPERATOR_REGEX = { "\\+=", "-=", "\\*=", "/=", "%=", "="};
 
     public String getVariable() {

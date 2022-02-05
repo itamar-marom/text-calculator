@@ -84,10 +84,10 @@ public class FixedVariableParser implements Parser {
         Double variable = variables.get(variableName);
         switch (preFix) {
             case "++":
-                variables.put(variableName, variable + 1);;
+                variables.put(variableName, variable + 1);
                 break;
             case "--":
-                variables.put(variableName, variable - 1);;
+                variables.put(variableName, variable - 1);
                 break;
         }
         return variable;

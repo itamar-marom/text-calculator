@@ -3,7 +3,7 @@ import java.util.*;
 public class TextCalculator {
 
     private final static Scanner in = new Scanner(System.in);
-    private HashMap<String, Double> variables;
+    private final HashMap<String, Double> variables;
     private final static MultiplicativeResolver multiplicativeResolver = new MultiplicativeResolver();
     private final static AdditiveResolver additiveResolver = new AdditiveResolver();
     private final static FixedVariableParser fixedVariableParser = new FixedVariableParser();
