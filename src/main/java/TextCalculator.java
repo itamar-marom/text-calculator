@@ -12,6 +12,9 @@ public class TextCalculator {
     public TextCalculator() {
         variables = new HashMap<>();
     }
+    public TextCalculator(HashMap<String, Double> variables) {
+        this.variables = variables;
+    }
 
     public void start() {
         String equationString = "";
@@ -21,9 +24,7 @@ public class TextCalculator {
             if ((!equationString.isEmpty()) && (!equationString.equals("exit"))) {
                 try {
                     Equation equation = new Equation(equationString);
-                    Double expressionAnswer = solve(equation);
-                    Double answer = placement(equation.getVariable(), equation.getOperator(), expressionAnswer);
-                    variables.put(equation.getVariable(), answer);
+                    solve(equation);
                 } catch (Exception ex) {
                     System.out.println("Equation is not valid: " + equationString + "\n" + ex);
                 }
@@ -37,7 +38,6 @@ public class TextCalculator {
         String expression = equation.getExpression();
         expression = expression.replaceAll(" ", "");
         expression = fixedVariableParser.parse(variables, expression);
-//        System.out.println("After fvp: " + expression);
         expression = negativeNumberParser.parse(null, expression);
 
         Stack<String> stack = new Stack<>();
@@ -87,10 +87,15 @@ public class TextCalculator {
         }
         multiplicativeResolver.resolve(finalExpression);
         additiveResolver.resolve(finalExpression);
-        return Double.valueOf(finalExpression.get(0));
+
+        Double expressionAnswer = Double.valueOf(finalExpression.get(0));
+        Double answer = placement(equation.getVariable(), equation.getOperator(), expressionAnswer);
+        variables.put(equation.getVariable(), answer);
+        return answer;
     }
 
-    public Double placement(String variable, String placement, Double calculation) throws Exception {
+    private Double placement(String variable, String placement, Double calculation) throws Exception {
+
         if (placement.equals("="))
             return calculation;
 

@@ -8,8 +8,6 @@ public class AdditiveResolver implements Resolver {
         if (expression.get(0).equals("+"))
             expression.remove(0);
 
-        System.out.println(expression.toString());
-
         while (expression.size() >= 3) {
             try {
                 Double component1 = Double.valueOf(expression.get(0));

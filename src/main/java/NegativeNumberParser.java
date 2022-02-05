@@ -6,6 +6,7 @@ public class NegativeNumberParser implements Parser {
     @Override
     public String parse(HashMap<String, Double> variables, String str) throws Exception {
 
+        // -(4 - 2) --> (0 - (4 - 2))
         char[] arr = str.toCharArray();
         String newEquation = "";
 

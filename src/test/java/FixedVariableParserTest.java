@@ -27,6 +27,11 @@ public class FixedVariableParserTest extends TestCase {
         assertEquals("", 0.0, variables.get("a"));
     }
 
+    public void testParseVariableNotExists() {
+        HashMap<String, Double> variables = new HashMap<String, Double>();
+        testParse("a", "0.0", variables, false);
+    }
+
     public void testParseBasicNegativePrefix() {
         HashMap<String, Double> variables = new HashMap<String, Double>();
         variables.put("a", 0.0);
