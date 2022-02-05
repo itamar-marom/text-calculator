@@ -7,27 +7,27 @@ public class FixedVariableParser implements Parser {
     @Override
     public String parse(HashMap<String, Double> variables, String str) throws Exception {
         char[] arr = str.toCharArray();
-        String newEquation = "";
+        StringBuilder newEquation = new StringBuilder();
 
         for (int i = 0; i < arr.length; i++) {
 
             // If it is a start of a variable
             if (Character.isAlphabetic(arr[i])) {
-                String variableName = "";
+                StringBuilder variableName = new StringBuilder();
                 int variableNameEndIndex = i;
                 // Get the entire name
                 while (variableNameEndIndex < arr.length) {
                     if (!Character.isAlphabetic(arr[variableNameEndIndex]) &&
                             !Character.isDigit(arr[variableNameEndIndex]))
                         break;
-                    variableName += arr[variableNameEndIndex];
+                    variableName.append(arr[variableNameEndIndex]);
                     arr[variableNameEndIndex] = ' ';
                     variableNameEndIndex++;
                 }
 
                 // Check if it exists
-                if (!variables.containsKey(variableName))
-                    throw new Exception("Variable does not exists: " + variableName);
+                if (!variables.containsKey(variableName.toString()))
+                    throw new Exception("Variable does not exists: " + variableName.toString());
 
                 // Get pre-post fixes before
                 String potentialPreFix = getPreFix(arr, i);
@@ -36,32 +36,32 @@ public class FixedVariableParser implements Parser {
                 Double value;
 
                 if ((potentialPreFix != null) && (potentialPostFix != null))
-                    throw new Exception("Variable have preFix and postFix operators: " + variableName);
+                    throw new Exception("Variable have preFix and postFix operators: " + variableName.toString());
 
                 if (potentialPreFix != null) {
-                    value = enforcePreFix(variables, variableName, potentialPreFix);
-                    newEquation = newEquation.substring(0, newEquation.length() - 2) +
-                            value.toString();
+                    value = enforcePreFix(variables, variableName.toString(), potentialPreFix);
+                    newEquation = new StringBuilder(newEquation.substring(0, newEquation.length() - 2) +
+                            value.toString());
                     arr[i - 1] = ' ';
                     arr[i - 2] = ' ';
                     i = variableNameEndIndex - 1;
                 } else if (potentialPostFix != null) {
-                    value = enforcePostFix(variables, variableName, potentialPostFix);
-                    newEquation += value.toString();
+                    value = enforcePostFix(variables, variableName.toString(), potentialPostFix);
+                    newEquation.append(value.toString());
                     arr[variableNameEndIndex] = ' ';
                     arr[variableNameEndIndex + 1] = ' ';
                     i = variableNameEndIndex + 1;
                 } else {
-                    value = variables.get(variableName);
-                    newEquation += value.toString();
+                    value = variables.get(variableName.toString());
+                    newEquation.append(value.toString());
                     i = variableNameEndIndex - 1;
                 }
             } else {
-                newEquation += arr[i];
+                newEquation.append(arr[i]);
             }
         }
 
-        return newEquation;
+        return newEquation.toString();
     }
 
     private Double enforcePreFix(HashMap<String, Double> variables, String variableName, String preFix) {
