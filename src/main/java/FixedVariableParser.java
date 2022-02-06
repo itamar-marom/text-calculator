@@ -53,6 +53,14 @@ public class FixedVariableParser implements Parser {
                     i = variableNameEndIndex + 1;
                 } else {
                     value = variables.get(variableName.toString());
+
+                    if (newEquation.length() > 0) {
+                        char endChar = newEquation.charAt(newEquation.length() - 1);
+
+                        if (!Operator.isOperator(endChar))
+                            throw new Exception("Can't put two components without operator between them.");
+                    }
+
                     newEquation.append(value.toString());
                     i = variableNameEndIndex - 1;
                 }
@@ -60,7 +68,9 @@ public class FixedVariableParser implements Parser {
                 newEquation.append(arr[i]);
             }
         }
-
+        System.out.println(
+                newEquation.toString()
+        );
         return newEquation.toString();
     }
 

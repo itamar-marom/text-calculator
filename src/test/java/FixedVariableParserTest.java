@@ -60,6 +60,13 @@ public class FixedVariableParserTest extends TestCase {
         assertEquals("", 1.0, variables.get("a"));
     }
 
+    public void testParseNumberAndVariable() {
+        HashMap<String, Double> variables = new HashMap<>();
+        variables.put("a", 0.0);
+        testParse("+1a", "", variables, false);
+        assertEquals("", 0.0, variables.get("a"));
+    }
+
     public void testParseMinusNegativeNumber() {
         HashMap<String, Double> variables = new HashMap<>();
         variables.put("a", 0.0);
