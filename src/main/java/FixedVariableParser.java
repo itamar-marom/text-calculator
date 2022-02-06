@@ -68,7 +68,7 @@ public class FixedVariableParser implements Parser {
                 newEquation.append(arr[i]);
             }
         }
-        
+
         return newEquation.toString();
     }
 
